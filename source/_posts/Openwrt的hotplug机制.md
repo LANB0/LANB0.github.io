@@ -51,6 +51,7 @@ MAJOR	|主设备号
 MINOR	|次要设备号
 SEQNUM	|序号(一个数字)
 SUBSYSTEM|	固定值 “block”
+
 #### iface 文件夹
 传递给每个 iface 热插拔脚本有三个主要的环境量：
 
@@ -67,6 +68,7 @@ freq_drift_ppm|	ntp 变量
 offset	|ntp 变量
 stratum	|ntp 变量
 poll_interval	|ntp 变量
+
 即使没有NTP同步，您也会收到一个定期的热插拔事件，其中stratum=16，开机后大约每11分钟一次。
 
 #### usb 文件夹
