@@ -1,7 +1,7 @@
 ---
 title: Openwrt的hotplug机制
 date: 2020-07-08 17:03:25
-tags: Openwrt,hotplug
+tags: [Openwrt,hotplug]
 ---
 
 ## 热插拔
