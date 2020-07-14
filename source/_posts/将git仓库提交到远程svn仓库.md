@@ -6,7 +6,7 @@ tags:[git,svn]
 
 公司代码日常开发由于SVN过于缓慢，已经迁移到内部gitlib服务器上，并使用git管理。但由于研发管理仍采用SVN，导致开发完成提测和发布仍需要将代码上传SVN。由此需要将本地已有GIT仓库上传到SVN服务器。
 
-##创建SVN仓库
+## 创建SVN仓库
 ```
 svn co http://svn.example.com/foo
 cd myproj
@@ -18,7 +18,7 @@ svn commit -m'Created trunk directory'
 svn mkdir --parents http://url/dir_name --message "messages"
 ```
 
-##手动指定SVN仓库
+## 手动指定SVN仓库
 
 在本地git仓库配置文件中添加以下内容：
 ```
@@ -36,21 +36,21 @@ svn-remote.svn.fetch=:refs/remotes/git-svn
 ```
 此配置作用为关联了SVN仓库和本地git仓库
 
-##提交本地git仓库到SVN
+## 提交本地git仓库到SVN
 
-###拉取远程SVN仓库,并checkout到本地git仓库的git-svn分支上
+### 拉取远程SVN仓库,并checkout到本地git仓库的git-svn分支上
 
 ```
 git svn fetch svn
 git checkout -b svn git-svn
 ```
-###将master分支merge进svn分支并提交到svn库
+### 将master分支merge进svn分支并提交到svn库
 ```
 git merge master --allow-unrelated-histories
 git svn dcommit
 ```
 
-###rebase到svn分支以便从master版本推送到svn库
+### rebase到svn分支以便从master版本推送到svn库
 ```
 git checkout master
 git rebase svn
