@@ -1,6 +1,7 @@
 ---
 title: Openwrt的hotplug机制
 date: 2020-07-08 17:03:25
+categories: 技术
 tags: [Openwrt,hotplug]
 ---
 
@@ -10,6 +11,7 @@ tags: [Openwrt,hotplug]
 当使用PPPoE连接或者在不稳定的网络中，或使用硬件按钮时非常有用。
 
 该功能模块模拟/扩展了长期未用的Hotplug2程序包所执行的操作。
+<!--more-->
 
 ## 工作原理
 在 /etc/hotplug.d 文件夹你可以发现 block iface, net 和 ntp 等文件夹.
@@ -97,7 +99,7 @@ EOF
 ```
 每次接口上线时，都会执行if / fi内声明的语句。
 
-#### 当USB WiFi热插拔时重启wlan
+### 当USB WiFi热插拔时重启wlan
 Niii发布了这个简单的USB WiFi设备热插拔事件示例，以触发init.d 网络重启wlan0脚本。
 
 检测 RTL8188SU_PRODID 的一些参数数据:
@@ -119,7 +121,7 @@ if [ "${PRODUCT}" = "${RTL8188SU_PRODID}" ]; then
 fi
 EOF
 ```
-#### 符号链接代替设备重命名
+### 符号链接代替设备重命名
 另一个用于创建符号链接而不是重命名设备的脚本。
 因为当我插入一个usb设备时会收到2个add事件，而为了确保在创建符号链接前设备已经创建，我在这里增加了一个判断DEVICE_NAME是否为空．
 ```
@@ -150,7 +152,7 @@ if [ "${PRODUCT}" = "${CP210_PRODID}" ];
 fi
 EOF
 ```
-#### 检测插入的usb设备是否蓝牙的脚本
+### 检测插入的usb设备是否蓝牙的脚本
 ```
 cat << "EOF" > /etc/hotplug.d/usb/20-bt_test
 BT_PRODID="a12/1/"
@@ -190,7 +192,7 @@ case "$ACTION" in
 esac
 EOF
 ```
-#### xfs的自定义自动挂载脚本
+### xfs的自定义自动挂载脚本
 ```
 cat << "EOF" > /etc/hotplug.d/block/xfs_automount
 # 如果新的block设备已连接
@@ -217,7 +219,7 @@ fi
 EOF
 ```
 
-#### USB 4G模块固定AT指令端口
+### USB 4G模块固定AT指令端口
 ```
 cat << "EOF" > /etc/hotplug.d/usb/10-usb
 
@@ -253,7 +255,6 @@ cat << "EOF" > /etc/hotplug.d/usb/10-usb
 }
 EOF
 ```
-
 ## 冷插拔
 如果您注意到在openwrt 18.0.*版本中删除了udev和eudev，请不要担心，因为您仍然可以使这些东西有效。
 

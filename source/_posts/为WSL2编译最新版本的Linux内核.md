@@ -1,6 +1,7 @@
 ---
 title: 为WSL2编译最新版本的Linux内核
 date: 2020-07-22 16:58:15
+categories: 技术
 tags: [WSL2,Linux,kernel]
 ---
 
@@ -8,6 +9,7 @@ tags: [WSL2,Linux,kernel]
 WSL 2相比WSL 1，最大的改变就是使用了真正的Linux内核，而不仅仅是一个适配层。我们可以通过命令uname -r查看这个内核的版本，通过正式推送获得的WSL 2的内核版本应当是4.19.104。最近闲下来，折腾着装了archLinux来玩儿，滚动一时爽，一直滚动一直爽，爽完了发现内核版本似乎不大对，内核一直没更新掉啊，作为arch怎么可以不滚最新的内核。查资料发现，kernel居然在windows文件系统下，于是怒编之，替换之！
 
 本次我们编译[https://www.kernel.org/](https://www.kernel.org/)上面最新的5.7.9版本的内核。
+<!--more-->
 
 ## 前置工作
 首先，我们需要一个可用的Linux环境，我使用的是日常开发使用的Ubuntu18.04，作为内核编译的平台。
